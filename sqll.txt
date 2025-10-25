@@ -1,0 +1,68 @@
+create table müsterilerr(
+müsteri_id int primary key,
+müsteri_ad varchar(40),
+müsteri_soyad varchar(40),
+müsteri_telefon int)
+
+create table satislarr(
+satis_id int primary key,
+tarih datetime,
+toplam_tutar int,
+gider_id int,
+müsteri_id int)
+
+create table kategorilerr(
+kategori_id int primary key,
+kategori_adi varchar(40))
+
+create table firmaa(
+firma_id int primary key,
+firma_adi varchar(40),
+alinan_urun_id int,
+tarih datetime)
+
+create table ürünlerr(
+urun_id int primary key,
+urun_adi varchar(40),
+kategori_id int,
+firma_id int,
+stok_adet int,
+alis_fiyat int,
+satis_fiyat int)
+
+create table urun_detayy(
+urun_id int, 
+urun_detay_id int primary key,
+satis_id int,
+adet int)
+
+create table giderlerr(
+gider_id int primary key,
+gider_tipi varchar(40),
+gider_tutari varchar(40),
+gider_tarihi datetime)
+
+create table satis_detayy(
+satis_id int,
+satis_detay_id int primary key,
+urun_id int,
+miktar int,
+birim_fiyat int,
+tutar int)
+
+use bakkalisko;
+go 
+insert into ürünlerr(urun_id,urun_adi,kategori_id,firma_id,stok_adet,alis_fiyat,satis_fiyat)
+values ('63445','makarna','2454637','242473','1423040','2400','2500');
+ 
+select * from kategorilerr
+
+update kategorilerr
+set kategori_id = '2435' , kategori_adi = 'yiyecekler'
+where kategori_id = NULL;
+
+delete from kategorilerr where kategori_id = NULL;
+
+
+
+
